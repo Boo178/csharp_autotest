@@ -21,11 +21,19 @@ namespace WebAddressbookTests
 
         public ApplicationManager()
         {
-            loginHelper = new LoginHelper(driver);
-            navigator = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
+            baseURL = "http://localhost/addressbook";
+            driver = new FirefoxDriver(); 
+            loginHelper = new LoginHelper(this);
+            navigator = new NavigationHelper(this, baseURL);
+            groupHelper = new GroupHelper(this);
         }
-
+        public IWebDriver Driver
+        {
+            get
+            {
+                return driver;
+            }
+        }
         public void Stop()
         {
             try
